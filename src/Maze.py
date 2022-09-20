@@ -16,9 +16,9 @@ class DrawMaze(object):
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))  # 创建屏幕对象
         self.num = stage
         self.maze = MakeMaze(ROW, COL)
-        self.back = pygame.image.load(f"../background/stage{stage}.jpg").convert()
-        self.road = pygame.image.load(f"../background/block{stage}.png").convert()
-        self.monster = pygame.image.load(rf"../monster/{stage}.png")
+        self.back = pygame.image.load("../background/stage@.jpg".replace('@', str(stage))).convert()
+        self.road = pygame.image.load("../background/block@.png".replace('@', str(stage))).convert()
+        self.monster = pygame.image.load("../monster/@.png".replace('@', str(stage)))
         self.monster.set_colorkey(self.monster.get_at((0, 0)))
         self.chest = pygame.image.load(f"../background/chest.png").convert()
         self.chest.set_colorkey(self.chest.get_at((0, 0)))
@@ -61,7 +61,7 @@ class DrawMaze(object):
 class Blocks(pygame.sprite.Sprite):
     def __init__(self, num, pos):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(f"../background/block{num}.png").convert()
+        self.image = pygame.image.load(f"../background/block%d.png".format(num)).convert()
         self.rect = (pos[1] * self.image.get_width() + BORDER, pos[0] * self.image.get_height() + BORDER,
                      self.image.get_width(), self.image.get_height())
 

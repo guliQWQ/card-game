@@ -10,8 +10,8 @@ class Dialog:
 
     def __init__(self, stage, dialog_num):
         self.window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        self.background = pygame.image.load(f'../background/stage{stage}.jpg').convert()
-        self.texts = Document(f'../dialogs/{stage}_{dialog_num}.docx').paragraphs
+        self.background = pygame.image.load(f'../background/stage@.jpg'.replace('@', str(stage))).convert()
+        self.texts = Document(f'../dialogs/@_*.docx'.replace('@',str(stage)).replace('*',str(dialog_num))).paragraphs
         self.textbg = pygame.image.load('../icons/text.png').convert()
         self.textbg.set_colorkey((0, 0, 0))
         self.button = pygame.image.load('../icons/option.png').convert()
@@ -20,7 +20,7 @@ class Dialog:
         self.font = pygame.font.Font('../icons/CaslonAntique.ttf', 30)
         self.textbg.blit(self.font.render('press mouse to next', True, 'White'), (1000, 220))
         for talker in self.talkers:
-            self.characters[talker] = pygame.image.load(f'../character/{talker}.png').convert()
+            self.characters[talker] = pygame.image.load(f'../character/@.png'.replace('@',talker)).convert()
             self.characters[talker] = pygame.transform.rotozoom(self.characters[talker], 0,
                                                                 500 / self.characters[talker].get_width())
             self.characters[talker].set_colorkey((0, 0, 0))

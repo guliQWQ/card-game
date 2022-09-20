@@ -23,7 +23,7 @@ class Character:
         else:
             self.block = [ROW - 1, COL - 1]
             self.chara = 'boss'
-            file_path = f'../character/boss{code}/'
+            file_path = f'../character/boss%d/'.format(code)
 
         self.rect = pygame.Rect(self.block[1] * BLOCK + BORDER, self.block[0] * BLOCK + BORDER, 64, 64)
         self.card_deck = [card('01'), card('01'), card('01'), card('02'), card('02'), card('03'), card('03')]
@@ -45,9 +45,9 @@ class Character:
         self.active = True
         self.dead = False
 
-        dead_pics_file = os.listdir(f'{file_path}dead')
-        static_pics_file = os.listdir(f'{file_path}stay')
-        run_pics_file = os.listdir(f'{file_path}run')
+        dead_pics_file = os.listdir(file_path+'dead')
+        static_pics_file = os.listdir(file_path+'stay')
+        run_pics_file = os.listdir(file_path+'run')
         self.static_pics = []
         self.run_pics = []
         self.atk_pics = []
