@@ -23,7 +23,7 @@ class Character:
         else:
             self.block = [ROW - 1, COL - 1]
             self.chara = 'boss'
-            file_path = f'../character/boss%d/'.format(code)
+            file_path = '../character/boss'+str(code)+'/'
 
         self.rect = pygame.Rect(self.block[1] * BLOCK + BORDER, self.block[0] * BLOCK + BORDER, 64, 64)
         self.card_deck = [card('01'), card('01'), card('01'), card('02'), card('02'), card('03'), card('03')]

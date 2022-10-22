@@ -20,7 +20,7 @@ class enemy:
     def __init__(self, num, e_type):
         self.total_HP = num * 10 + 30
         self.card_deck = enemy_types[(num, e_type)].copy()
-        self.icon = '../monster/%d.png'.format(num) if e_type == 2 else f'../monster/boss%d.png'.format(num)
+        self.icon = '../monster/'+str(num)+'.png' if e_type == 2 else f'../monster/boss'+str(num)+'.png'
         self.hand_card = []
         self.drop_card = []
         self.buffs = []

@@ -93,7 +93,7 @@ def check_events():
 
 
 def level_manager(num, player):
-    bgm = pygame.mixer.Sound(f'../bgm/stage@.mp3'.replace('@',str(num)))
+    bgm = pygame.mixer.Sound(f'../bgm/stage@.mp3'.replace('@', str(num)))
     bgm.play(-1)
     c = Condition()
     dead_time = 0

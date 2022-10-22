@@ -20,7 +20,7 @@ class card:
         self.usages = list(map(int, list(code[1:])))
         self.name = Names[code]
         self.imagePath = f'../cards/{code}.png'
-        self.picture = pygame.image.load(self.imagePath)
+        self.picture = pygame.image.load(f'../cards/{code}.png')
         self.user = None
         self.object = None
         self.intro = (self.name+': ')+' '.join(usage[u] for u in self.usages)
@@ -158,86 +158,3 @@ class card:
         self.user.defe = self.user.ori_defe + defe_buff * defe_para
         self.user.current_HP = min(self.user.current_HP + HP_buff * 5, self.user.total_HP)
         self.user.buffs = [buff for buff in self.user.buffs if buff[2] > 0]
-
-
-# class people:
-#     def __init__(self, ele, name):
-#         if ele == 0:
-#             self.card_deck = ['51', '41', '4126', '22', '5127', '3127', '08', '2146']
-#         self.level = 1
-#         self.name = name
-#         self.hand_card = []
-#         self.drop_card = []
-#         self.cost = self.level if self.level <= 5 else 5
-#         self.cost_now = self.cost
-#         self.buffs = []
-#         self.ori_atk = 15 * self.level
-#         self.atk = self.ori_atk
-#         self.max_HP = 50
-#         self.HP = self.max_HP
-#         self.ori_defe = 5 * self.level
-#         self.defe = self.ori_defe
-#         self.active = True
-#
-#     def draw(self):
-#         random.shuffle(self.card_deck)
-#         while len(self.hand_card) < 5:
-#             if not self.card_deck:
-#                 self.card_deck, self.drop_card = self.drop_card, self.card_deck
-#             self.hand_card.append(self.card_deck.pop())
-#
-#     def select(self):
-#         card_num = input('please press 1~5 to select your card\n')
-#         card_num = int(card_num)
-#         assert card_num in range(1, 6)
-#         return self.hand_card.pop(card_num - 1)
-#
-#
-# def main():
-#     p1 = people(0, 'me')
-#     p2 = people(0, 'sb')
-#
-#     while p1.HP > 0 and p2.HP > 0:
-#
-#         p1.draw()  # 每回合将卡抽到5张
-#         p2.draw()
-#
-#         print('your hand_card:\n')
-#
-#         for c in p1.hand_card:
-#             c1 = card(c)
-#             print(c1)
-#
-#         if p1.active:
-#             out_code = p1.select()
-#             card_out = card(out_code)
-#             p1.drop_card.append(out_code)
-#
-#             print('chosen card:')
-#             print(card_out)
-#             p1, p2 = card_out.work(p1, p2)
-#             card_out.buff_cont()
-#         else:
-#             print('you have been controled')
-#             p1.active = True
-#         print('your buff')
-#         for buff in p1.buffs:
-#             print(f'{elements[buff[0]]} {Buffs[buff[1]]} {buff[2]}')
-#
-#         if p2.active:
-#             ecard = p2.hand_card.pop(random.randrange(0, 5))  # 抽卡
-#             enemy_card = card(ecard)  # 印卡
-#             print(enemy_card)
-#             p1.drop_card.append(ecard)  # 卡放入弃牌堆
-#             p2, p1 = enemy_card.work(p2, p1)  # 卡打出效果
-#             enemy_card.buff_cont()  # 结算自己的buff
-#         else:
-#             print('enemy has been controled')
-#             p2.active = True
-#         print('enemy\'s buff')
-#         for buff in p2.buffs:
-#             print(f'{elements[buff[0]]} {Buffs[buff[1]]} {buff[2]}')
-#
-#
-# if __name__ == '__main__':
-#     main()

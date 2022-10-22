@@ -61,7 +61,7 @@ class DrawMaze(object):
 class Blocks(pygame.sprite.Sprite):
     def __init__(self, num, pos):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(f"../background/block%d.png".format(num)).convert()
+        self.image = pygame.image.load("../background/block"+str(num)+".png").convert()
         self.rect = (pos[1] * self.image.get_width() + BORDER, pos[0] * self.image.get_height() + BORDER,
                      self.image.get_width(), self.image.get_height())
 
